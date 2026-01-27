@@ -1,15 +1,25 @@
 import requests
 
-base_url = f"http://api.openweathermap.org/data/2.5/weather?"
+#API Key
 API_key = "12407454b28300b217a183936ecfe7e1"
-city = input("Enter a City: ")
 
-url = base_url + "appid=" + API_key + "&q=" + city
+#Retrieves data from OpenWeatherMap API
+def get_weather(city):
+    base_url = f"http://api.openweathermap.org/data/2.5/weather?"
+    url = base_url + "appid=" + API_key + "&q=" + city + "&units=imperial"
 
-data = requests.get(url).json()
+    data = requests.get(url).json()
 
-temp = data["main"]["temp"]
-feels_like = data["main"]["feels_like"]
-description = data["weather"][0]["description"]
+    temps = data["main"]["temp"]
+    feels_like = data["main"]["feels_like"]
+    description = data["weather"][0]["description"]
 
-print(f"The temperature is {temp}, it feels like {feels_like}, and it is {description}")
+    return temps, feels_like, description
+
+#Displays data from API
+def provide_data(temps, feels_like, description):
+#Asks for user input
+
+#Actually displays data
+temps, feels_like, description = get_weather(city)
+provide_data(temps, feels_like, description)
