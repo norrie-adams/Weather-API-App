@@ -1,4 +1,29 @@
 import requests
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtCore import Qt
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Weather App")
+        self.setGeometry(700, 300, 500, 500)
+        self.setWindowIcon(QIcon("weather-app-icon.png"))
+
+        label = QLabel("The weather in ___ is ___", self)
+        label.setFont(QFont("Arial", 20))
+        label.setGeometry(0, 300, 500, 500)
+        label.setAlignment(Qt.AlignHCenter)
+
+def main():
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    main()
 
 #Used to declare a city invalid
 invalid = False
@@ -22,7 +47,6 @@ def get_weather(city):
         temps = data["main"]["temp"]
         feels_like = data["main"]["feels_like"]
         description = data["weather"][0]["description"]
-
         return temps, feels_like, description
 
 #Displays data from API
