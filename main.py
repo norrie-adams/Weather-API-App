@@ -1,4 +1,6 @@
 import requests
+import os
+from dotenv import load_dotenv
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
 from PyQt5.QtGui import QIcon, QFont
@@ -29,7 +31,8 @@ if __name__ == "__main__":
 invalid = False
 
 #API Key
-API_key = "12407454b28300b217a183936ecfe7e1"
+load_dotenv()
+API_key = os.getenv("WEATHER_API_KEY")
 
 #Retrieves data from OpenWeatherMap API
 def get_weather(city):
