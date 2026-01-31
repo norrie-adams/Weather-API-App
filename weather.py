@@ -1,8 +1,6 @@
 import requests
 import os
 from dotenv import load_dotenv
-import gui
-from gui import invalid_city 
 
 #API Key
 load_dotenv()
@@ -17,7 +15,7 @@ def get_weather(city):
 
     #Checks for invalid cities
     if "main" not in data:
-        invalid_city()
+        invalid = True
     
     #Pulls data from API
     else:

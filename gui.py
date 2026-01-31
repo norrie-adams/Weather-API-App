@@ -1,4 +1,3 @@
-import weather
 from weather import get_weather
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
@@ -12,7 +11,7 @@ class WeatherApp(QMainWindow):
         self.setGeometry(700, 300, 500, 500)
         self.setWindowIcon(QIcon("weather-app-icon.png"))
 
-        label = QLabel("The weather in ___ is ___", self)
+        label = QLabel(f"The temperature in {city} is {temps}, it feels like {feels_like}, and it is {description}", self)
         label.setFont(QFont("Arial", 20))
         label.setGeometry(0, 300, 500, 500)
         label.setAlignment(Qt.AlignHCenter)
@@ -22,12 +21,15 @@ invalid = False
 
 #Displays data from API
 def provide_data(temps, feels_like, description):
-    print(f"The temperature is {temps}, it feels like {feels_like}, and it is {description}")
+    temps = temps
+    feels_like = feels_like
+    description = description
+    
 
 #Prints invalid city message
-def invalid_city():
-    print("Please enter in a valid city")
-    invalid = True
+#def invalid_city():
+    #print("Please enter in a valid city")
+    #invalid = True
 
 #Asks for user input
 city = input("Enter a City: ")
