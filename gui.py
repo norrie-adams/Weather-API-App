@@ -1,6 +1,6 @@
 from weather import get_weather
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QGridLayout
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton
 from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtCore import Qt
 
@@ -23,7 +23,7 @@ class WeatherApp(QMainWindow):
         self.line_edit.setGeometry(150, 350, 200, 50)
         self.button.setGeometry(210, 10, 100, 40)
         self.button.clicked.connect(self.submit)
-        self.label.setGeometry(0, 100, 250, 250)
+        self.label.setGeometry(0, 100, 400, 110)
 
     def submit(self):
         city = self.line_edit.text()
