@@ -16,10 +16,6 @@ class WeatherApp(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        #data = QLabel(f"The temperature in {city} is {temps}, it feels like {feels_like}, and it is {description}", self)
-        #data.setFont(QFont("Arial", 20))
-        #data.setGeometry(0, 300, 500, 500)
-        #data.setAlignment(Qt.AlignHCenter)
         self.line_edit.setGeometry(150, 350, 200, 50)
         self.button.setGeometry(210, 10, 100, 40)
         self.button.clicked.connect(self.submit)
@@ -33,6 +29,8 @@ class WeatherApp(QMainWindow):
         except:
             text = ("Please enter in a valid city")
         self.label.setText(text)
+        self.line_edit.hide()
+        self.button.hide()
 
 #Used to declare a city invalid
 invalid = False
