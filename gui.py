@@ -1,7 +1,7 @@
 from weather import get_weather
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QWidget
-from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtGui import QIcon, QFont, QPixmap
 from PyQt5.QtCore import Qt
 
 class WeatherApp(QMainWindow):
@@ -13,7 +13,12 @@ class WeatherApp(QMainWindow):
         self.button = QPushButton("Enter", self)
         self.line_edit = QLineEdit(self)
         self.label = QLabel(self)
+        self.image = QLabel(self)
+        pixmap = QPixmap("partly-cloudy-icon.png")
+        self.image.setPixmap(pixmap)
+        self.image.setScaledContents(True)
         self.initUI()
+
 
     def initUI(self):
         self.button.setGeometry(200, 270, 100, 40)
@@ -26,6 +31,8 @@ class WeatherApp(QMainWindow):
         self.line_edit.setGeometry(150, 200, 200, 50)
         self.line_edit.setPlaceholderText("Enter a city")
         self.line_edit.setAlignment(Qt.AlignCenter)
+        self.image.setGeometry(0, 0, 250, 250)
+        
 
     def submit(self):
         city = self.line_edit.text()
