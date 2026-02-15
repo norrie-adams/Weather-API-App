@@ -18,6 +18,8 @@ class WeatherApp(QMainWindow):
         self.image.setPixmap(pixmap)
         self.image.setScaledContents(True)
         self.image.hide()
+        text_font = QFont("Cosmic Sans", 14)
+        self.label.setFont(text_font)
         self.initUI()
 
 
@@ -26,13 +28,12 @@ class WeatherApp(QMainWindow):
         self.button.clicked.connect(self.submit)
         self.label.setAlignment(Qt.AlignHCenter)
         self.label.setWordWrap(True)
-        self.label.adjustSize()
         self.label.move(0, 350)
-        self.label.resize(self.width(), self.label.height())
+        self.label.setGeometry(20, 350, 460, 160)
         self.line_edit.setGeometry(150, 200, 200, 50)
         self.line_edit.setPlaceholderText("Enter a city")
         self.line_edit.setAlignment(Qt.AlignCenter)
-        self.image.setGeometry(0, 0, 250, 250)
+        self.image.setGeometry(110, 50, 275, 275)
         
 
     def submit(self):
