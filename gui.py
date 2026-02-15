@@ -17,6 +17,7 @@ class WeatherApp(QMainWindow):
         pixmap = QPixmap("partly-cloudy-icon.png")
         self.image.setPixmap(pixmap)
         self.image.setScaledContents(True)
+        self.image.hide()
         self.initUI()
 
 
@@ -39,6 +40,20 @@ class WeatherApp(QMainWindow):
         try:
             temps, feels_like, description = get_weather(city)
             text = (f"The temperature in {city} is {temps}, it feels like {feels_like} and it is {description}")
+            weather_icons = {
+                "few clouds": "partly-cloudy-icon.png",
+                "rain": "rainy-weather-icon.png",
+                "sunny": "sunny-weather-icon.png",
+                "overcast": "cloudy-weather-icon.png",
+                "snow": "snow-weather-icon.png",
+                "cloudy": "cloudy-weather-icon.png"
+            }
+            for key, icon_file in weather_icons.items():
+                if key in description.lower():
+                    self.pixmap = QPixmap(icon_file)
+                    self.image.setPixmap(self.pixmap)
+                    self.image.show()
+                    break
         except:
             text = ("Please enter in a valid city")
         self.label.setText(text)
